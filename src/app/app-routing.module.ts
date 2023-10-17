@@ -9,12 +9,8 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: '/default',
+        redirectTo: '/sample-page',
         pathMatch: 'full'
-      },
-      {
-        path: 'default',
-        loadComponent: () => import('./demo/default/default.component')
       },
       {
         path: 'typography',
