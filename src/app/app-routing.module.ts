@@ -13,14 +13,6 @@ const routes: Routes = [
         pathMatch: 'full'
       },
       {
-        path: 'typography',
-        loadComponent: () => import('./demo/elements/typography/typography.component')
-      },
-      {
-        path: 'color',
-        loadComponent: () => import('./demo/elements/element-color/element-color.component')
-      },
-      {
         path: 'sample-page',
         loadComponent: () => import('./demo/sample-page/sample-page.component')
       }
