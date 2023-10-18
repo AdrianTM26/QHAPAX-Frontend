@@ -9,12 +9,12 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: '/sample-page',
+        redirectTo: 'test/test-page',
         pathMatch: 'full'
       },
       {
-        path: 'sample-page',
-        loadComponent: () => import('./demo/sample-page/sample-page.component')
+        path: 'test',
+        loadChildren: () => import('./modules/test/test.module').then(m => m.TestModule)
       }
     ]
   },

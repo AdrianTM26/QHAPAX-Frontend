@@ -15,7 +15,7 @@ import { NavContentComponent } from './shared/navigation/nav-content/nav-content
 import { NavGroupComponent } from './shared/navigation/nav-content/nav-group/nav-group.component';
 import { NavCollapseComponent } from './shared/navigation/nav-content/nav-collapse/nav-collapse.component';
 import { NavItemComponent } from './shared/navigation/nav-content/nav-item/nav-item.component';
-// import { SharedModule } from './shared/shared/shared.module';
+
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgScrollbarModule } from 'ngx-scrollbar';
@@ -32,12 +32,11 @@ import { NgScrollbarModule } from 'ngx-scrollbar';
     NavContentComponent,
     NavGroupComponent,
     NavItemComponent,
-    NavCollapseComponent,
+    NavCollapseComponent
   ],
   imports: [
     BrowserModule, 
     AppRoutingModule, 
-    // SharedModule, 
     BrowserAnimationsModule, 
     CommonModule,
     FormsModule,

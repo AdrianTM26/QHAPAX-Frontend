@@ -24,11 +24,20 @@ const NavigationItems = [
     icon: 'icon-navigation',
     children: [
       {
-        id: 'default',
-        title: 'Default',
+        id: 'test',
+        title: 'Test',
         type: 'item',
         classes: 'nav-item',
-        url: '/default',
+        url: '/test/test-page',
+        icon: 'ti ti-dashboard',
+        breadcrumbs: false
+      },
+      {
+        id: 'sample',
+        title: 'Sample page',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/test/sample-page',
         icon: 'ti ti-dashboard',
         breadcrumbs: false
       }
