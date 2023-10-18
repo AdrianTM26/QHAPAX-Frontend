@@ -10,4 +10,5 @@ import { TestModule } from '../../test.module';
 })
 export class TestPageComponent {
 
+  value:any;
 }
