@@ -6,11 +6,11 @@ import { Location, LocationStrategy } from '@angular/common';
 import { BerryConfig } from '../../../app-config';
 
 @Component({
-  selector: 'app-admin',
-  templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.scss']
+  selector: 'app-shared',
+  templateUrl: './shared.component.html',
+  styleUrls: ['./shared.component.scss']
 })
-export class AdminComponent {
+export class SharedComponent {
   // public props
   berryConfig;
   navCollapsed: boolean;

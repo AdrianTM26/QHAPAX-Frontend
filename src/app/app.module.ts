@@ -4,7 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AdminComponent } from './theme/layout/admin/admin.component';
+import { SharedComponent } from './theme/layout/admin/shared.component';
 import { NavigationItem } from './theme/layout/admin/navigation/navigation';
 import { NavBarComponent } from './theme/layout/admin/nav-bar/nav-bar.component';
 import { NavLeftComponent } from './theme/layout/admin/nav-bar/nav-left/nav-left.component';
@@ -23,7 +23,7 @@ import { NgScrollbarModule } from 'ngx-scrollbar';
 @NgModule({
   declarations: [
     AppComponent,
-    AdminComponent,
+    SharedComponent,
     NavBarComponent,
     NavLeftComponent,
     NavRightComponent,
