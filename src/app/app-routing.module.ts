@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SharedComponent } from './theme/layout/admin/shared.component';
+import { SharedComponent } from './shared/shared.component';
 
 const routes: Routes = [
   {

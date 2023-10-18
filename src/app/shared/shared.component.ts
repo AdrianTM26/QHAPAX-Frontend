@@ -3,7 +3,7 @@ import { Component, NgZone } from '@angular/core';
 import { Location, LocationStrategy } from '@angular/common';
 
 // Project import
-import { BerryConfig } from '../../../app-config';
+import { BerryConfig } from '../app-config';
 
 @Component({
   selector: 'app-shared',
