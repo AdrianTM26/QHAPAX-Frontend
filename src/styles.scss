@@ -76,3 +76,7 @@ $pc-secondary: map-get($preset-colors, 'preset-1', 'secondary');
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.fc-daygrid-event-harness{
+  cursor: pointer !important;
+}

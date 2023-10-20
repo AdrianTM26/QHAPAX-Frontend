@@ -5,10 +5,11 @@ import { TestRoutingModule } from './test.routes';
 
 import { TestComponent } from './test.component';
 import { MaterialModule } from '../material.module';
+import { CalendarComponent } from './pages/calendar/calendar.component';
 
 @NgModule({
   declarations: [
-    TestComponent
+    TestComponent,
   ],
   imports: [
     TestRoutingModule,

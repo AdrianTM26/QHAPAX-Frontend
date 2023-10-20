@@ -40,6 +40,15 @@ const NavigationItems = [
         url: '/test/sample-page',
         icon: 'ti ti-dashboard',
         breadcrumbs: false
+      },
+      {
+        id: 'calendar',
+        title: 'Calendar',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/test/calendar',
+        icon: 'ti ti-calendar',
+        breadcrumbs: false
       }
     ]
   },

@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   { path: 'test-page', loadComponent: () => import('../test/pages/test-page/test-page.component').then(c => c.TestPageComponent) },
   { path: 'sample-page', loadComponent: () => import('../test/pages/sample-page/sample-page.component').then(c => c.SamplePageComponent) },
+  { path: 'calendar', loadComponent: () => import('../test/pages/calendar/calendar.component').then(c => c.CalendarComponent) },
 ];
 
 @NgModule({
