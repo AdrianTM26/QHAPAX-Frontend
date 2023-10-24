@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { CalendarOptions, EventClickArg } from '@fullcalendar/core';
 import { FullCalendarComponent } from '@fullcalendar/angular';
@@ -18,26 +18,62 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.scss']
 })
-export class CalendarComponent {
+export class CalendarComponent implements OnInit {
   @ViewChild('calendar') calendarComponent: FullCalendarComponent;
 
+  selectedOrgMod = "all";
+  newDate = null;
+
   events: any[] = [
-    { title: 'event 1', start: '2023-10-01', end: '2023-10-06', color: 'black', id: "a1" },
-    { title: 'event 2', date: '2023-10-02', color: 'red', id: "a2" },
+    // {
+    //   daysOfWeek: ['3'], // these recurrent events move separately
+    //   title: 'event 1', start: '2023-10-03', end: '2023-10-06', color: '#3D30A2', id: "a1"
+    // },
+    {
+      title: 'event 1', start: '2023-10-03', end: '2023-10-06', color: '#3D30A2', id: "a1"
+    },
+    { title: 'event 1', start: '2023-10-03', end: '2023-10-06', color: '#3D30A2', id: "a2" },
     { title: 'event 3', date: '2023-10-03', color: 'red', id: "a3" },
-    { title: 'event 4', date: '2023-10-03', color: 'green', id: "a4", extendedProps: {x:'hola'} }
+    { title: 'event 4', date: '2023-10-03', color: 'green', id: "a4", extendedProps: { x: 'hola' } },
+    { title: 'event 2', date: '2023-10-02', color: 'red', id: "a5" },
   ]
 
   constructor() {
   }
 
+  ngOnInit(): void {
+  }
+
   calendarOptions: CalendarOptions = {
     initialView: 'dayGridMonth', //dayGridDay / dayGridWeek / dayGridMonth
     headerToolbar: {
-      left: 'prev,next,today',
-      // left: 'prev,next today',
+      // left: 'today',
+      left: 'prev,next today',
       center: 'title',
       right: 'dayGridMonth,dayGridWeek,dayGridDay'
+    },
+    // footerToolbar: {
+    //   left: 'today'
+    // },
+    // hiddenDays:[1,0],
+    locale:'es',
+    customButtons: {
+      prev: {
+        text: 'Antes',
+        click: () => {
+          this.calendarComponent.getApi().prev();
+          console.log('prev')
+          console.log(this.calendarComponent.getApi().getDate())
+        }
+      },
+      next: {
+        text: 'Despues',
+        click: () => {
+          this.calendarComponent.getApi().next();
+          console.log('next')
+          console.log(this.calendarComponent.getApi().getDate())
+        }
+      },
     },
     buttonText: {
       today: "Hoy",
@@ -48,7 +84,13 @@ export class CalendarComponent {
     firstDay: 1,
     weekends: true, // initial value
     plugins: [dayGridPlugin],
-    events: this.events,
+    // events: this.events,
+    initialEvents: this.events,
+    eventChange: (x) => { console.log(x) },
+    eventAdd: (x) => { console.log(x) },
+    eventRemove: (x) => { console.log(x) },
+
+
     eventClick: (x: EventClickArg) => {
       if (confirm(`Delete event? \n ${JSON.stringify(x.event)}`)) {
         console.log("ok");
@@ -60,9 +102,13 @@ export class CalendarComponent {
   };
 
   addEvent() {
-    this.calendarComponent.getApi().addEvent({
-      title: 'event 1', start: '2023-10-01', end: '2023-10-06', color: 'black', id: "a1"
-    })
+    if (this.newDate != null) {
+      console.log(this.newDate);
+      this.calendarComponent.getApi().addEvent({
+        title: 'event 1', date: this.newDate, color: 'black', id: "a1"
+      })
+      this.newDate = null;
+    }
   }
 
   initEvents() {
@@ -72,8 +118,6 @@ export class CalendarComponent {
       });
     }
   }
-
-  selectedOrgMod = "all";
 
   deleteAll() {
     this.calendarComponent.getApi().removeAllEvents();
@@ -92,4 +136,5 @@ export class CalendarComponent {
       });
     }
   }
+
 }

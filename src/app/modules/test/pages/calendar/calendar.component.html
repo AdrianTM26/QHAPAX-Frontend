@@ -5,23 +5,28 @@
   <div class="card-block">
     <div class="container">
       <div class="row">
-        <div class="col-2">
-          <div class="btn-group-vertical">
-            <button type="button" class="btn btn-primary" (click)="initEvents()">init events</button>
-            <button type="button" class="btn btn-primary" (click)="addEvent()">add</button>
+        <div class="col-3">
+          <div class="input-group mb-3">
+            <input type="date" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2" [(ngModel)]="newDate">
+            <div class="input-group-append">
+              <button class="btn btn-outline-success" type="button" (click)="addEvent()">add</button>
+            </div>
+          </div>
+          <div class="btn-group-horizontal m-2">
+            <button type="button" class="btn btn-primary m-1" (click)="initEvents()">init events</button>
             <button type="button" class="btn btn-primary" (click)="deleteAll()">delete all</button>
           </div>
           <select class="form-select" aria-label="Default select example" [(ngModel)]="selectedOrgMod" (ngModelChange)="filterBy($event)">
             <!-- <option selected>Filter by</option> -->
             <option selected value="all">Estado</option>
-            <option value="black">Black</option>
+            <option value="#3D30A2">EXA</option>
             <option value="green">Green</option>
             <option value="red">Red</option>
           </select>
           <select class="form-select" aria-label="Default select example">
             <option selected value="all">Responsable</option>
           </select>
-          <hr>
+          <hr />
           <select class="form-select" aria-label="Default select example">
             <option selected value="all">Cumplimiento</option>
           </select>
@@ -35,8 +40,9 @@
             <option selected value="all">Unidad organizacional</option>
           </select>
         </div>
-        <div class="col-10">
-          <full-calendar #calendar [options]="calendarOptions" style="height: 200px !important"></full-calendar>
+        <div class="col-9">
+          <!-- <full-calendar #calendar [events]="events" [options]="calendarOptions"></full-calendar> -->
+          <full-calendar #calendar [options]="calendarOptions"></full-calendar>
         </div>
       </div>
     </div>

@@ -24,21 +24,21 @@ const NavigationItems = [
     icon: 'icon-navigation',
     children: [
       {
-        id: 'test',
-        title: 'Test',
-        type: 'item',
-        classes: 'nav-item',
-        url: '/test/test-page',
-        icon: 'ti ti-dashboard',
-        breadcrumbs: false
-      },
-      {
         id: 'sample',
         title: 'Sample page',
         type: 'item',
         classes: 'nav-item',
         url: '/test/sample-page',
         icon: 'ti ti-dashboard',
+        breadcrumbs: false
+      },
+      {
+        id: 'historico-controversia',
+        title: 'Historico Controversia',
+        type: 'item',
+        classes: 'nav-item',
+        url: '/test/historico-controversia',
+        icon: 'ti ti-book',
         breadcrumbs: false
       },
       {

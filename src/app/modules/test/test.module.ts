@@ -5,7 +5,7 @@ import { TestRoutingModule } from './test.routes';
 
 import { TestComponent } from './test.component';
 import { MaterialModule } from '../material.module';
-import { CalendarComponent } from './pages/calendar/calendar.component';
+import { PrimengModule } from '../primeng.module';
 
 @NgModule({
   declarations: [
@@ -14,6 +14,7 @@ import { CalendarComponent } from './pages/calendar/calendar.component';
   imports: [
     TestRoutingModule,
     MaterialModule,
+    PrimengModule,
     CommonModule,
   ], exports: [
     MaterialModule
