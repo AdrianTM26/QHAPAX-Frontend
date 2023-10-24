@@ -3,8 +3,10 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 import { CalendarOptions, EventClickArg } from '@fullcalendar/core';
 import { FullCalendarComponent } from '@fullcalendar/angular';
 import dayGridPlugin from '@fullcalendar/daygrid';
+import esLocale from '@fullcalendar/core/locales/es';
 import { TestModule } from '../../test.module';
 import { FormsModule } from '@angular/forms';
+import { CollapseServiceService } from 'src/app/services/collapse-service.service';
 
 
 @Component({
@@ -29,23 +31,36 @@ export class CalendarComponent implements OnInit {
     //   daysOfWeek: ['3'], // these recurrent events move separately
     //   title: 'event 1', start: '2023-10-03', end: '2023-10-06', color: '#3D30A2', id: "a1"
     // },
-    {
-      title: 'event 1', start: '2023-10-03', end: '2023-10-06', color: '#3D30A2', id: "a1"
-    },
-    { title: 'event 1', start: '2023-10-03', end: '2023-10-06', color: '#3D30A2', id: "a2" },
+    // {
+    //   title: 'event 1', start: '2023-10-03', end: '2023-10-06', color: '#3D30A2', id: "a1"
+    // },
+    { title: 'event 1', date: '2023-10-06', color: '#3D30A2', id: "a2" },
     { title: 'event 3', date: '2023-10-03', color: 'red', id: "a3" },
     { title: 'event 4', date: '2023-10-03', color: 'green', id: "a4", extendedProps: { x: 'hola' } },
     { title: 'event 2', date: '2023-10-02', color: 'red', id: "a5" },
   ]
 
-  constructor() {
-  }
+  constructor(
+    private collapseServiceService: CollapseServiceService
+  ) {}
 
   ngOnInit(): void {
+    this.collapseServiceService.navCollapsed$.subscribe(resp => {
+      setTimeout(() => {
+        this.calendarComponent.getApi().render();
+      }, 100);
+    });
   }
 
   calendarOptions: CalendarOptions = {
     initialView: 'dayGridMonth', //dayGridDay / dayGridWeek / dayGridMonth
+    plugins: [dayGridPlugin],
+    firstDay: 1,
+    weekends: true, // initial value
+    // hiddenDays:[1,0],
+    locale: esLocale,
+    // events: this.events,
+    initialEvents: this.events,
     headerToolbar: {
       // left: 'today',
       left: 'prev,next today',
@@ -55,8 +70,6 @@ export class CalendarComponent implements OnInit {
     // footerToolbar: {
     //   left: 'today'
     // },
-    // hiddenDays:[1,0],
-    locale:'es',
     customButtons: {
       prev: {
         text: 'Antes',
@@ -81,16 +94,9 @@ export class CalendarComponent implements OnInit {
       week: "Semana",
       day: "Día",
     },
-    firstDay: 1,
-    weekends: true, // initial value
-    plugins: [dayGridPlugin],
-    // events: this.events,
-    initialEvents: this.events,
     eventChange: (x) => { console.log(x) },
     eventAdd: (x) => { console.log(x) },
     eventRemove: (x) => { console.log(x) },
-
-
     eventClick: (x: EventClickArg) => {
       if (confirm(`Delete event? \n ${JSON.stringify(x.event)}`)) {
         console.log("ok");

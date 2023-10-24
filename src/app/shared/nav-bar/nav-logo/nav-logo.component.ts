@@ -1,5 +1,6 @@
 // Angular import
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { CollapseServiceService } from 'src/app/services/collapse-service.service';
 
 @Component({
   selector: 'app-nav-logo',
@@ -13,7 +14,9 @@ export class NavLogoComponent {
   windowWidth: number;
 
   // Constructor
-  constructor() {
+  constructor(
+    private collapseServiceService: CollapseServiceService
+  ) {
     this.windowWidth = window.innerWidth;
   }
 
@@ -23,5 +26,6 @@ export class NavLogoComponent {
       this.navCollapsed = !this.navCollapsed;
       this.NavCollapse.emit();
     }
+    this.collapseServiceService.navCollapsed = this.navCollapsed;
   }
 }
